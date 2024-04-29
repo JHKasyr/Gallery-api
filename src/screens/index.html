@@ -36,6 +36,26 @@
         </div>
     </div>
 
+    <div id="imageModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h1>Detalhes da Imagem</h1>
+            <form id="ModalImage">
+                <label for="edit-url">URL da Imagem:</label>
+                <input type="text" id="edit-url" name="edit-url" required />
+                <label for="edit-titulo">Título:</label>
+                <input type="text" id="edit-titulo" name="edit-titulo" required />
+                <label for="edit-autor">Autor:</label>
+                <input type="text" id="edit-autor" name="edit-autor" required />
+                <label for="edit-descricao">Descrição:</label>
+                <textarea id="edit-descricao" name="edit-descricao" required></textarea>
+                <button type="button" onclick="updateImage()">Salvar Alterações</button>
+                <button type="submit">Excluir</button>
+            </form>
+        </div>
+    </div>
+    
+
     <script src="../scripts/scriptLeituraImagem.js"></script>
 </body>
 </html>
