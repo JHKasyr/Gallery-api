@@ -27,12 +27,14 @@ function openImageModal(id, url, titulo, autor, descricao) {
     var tituloInput = document.getElementById('edit-titulo');
     var autorInput = document.getElementById('edit-autor');
     var descricaoInput = document.getElementById('edit-descricao');
+    var fullImage = document.getElementById('fullImage');
 
     idInput.textContent = id; // Atualiza o conteúdo do elemento de texto com o ID
     urlInput.value = url;
     tituloInput.value = titulo;
     autorInput.value = autor;
     descricaoInput.value = descricao;
+    fullImage.src = url;
 
     modal.style.display = 'block';
 

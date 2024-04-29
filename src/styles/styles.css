@@ -1,17 +1,17 @@
 /* Cores básicas e variáveis */
 :root {
-  --primary-color: #6a5acd; /* Roxo mais neutro */
-  --text-color: #fff; /* Branco para contraste no fundo escuro */
-  --background-color: #121212; /* Cinza muito escuro para o fundo principal */
+  --primary-color: #8b0000; /* Vermelho escuro para um toque sombrio */
+  --text-color: #ddd; /* Cinza claro para contraste com o fundo escuro */
+  --background-color: #222; /* Preto escuro para o fundo principal */
   --overlay-color: rgba(0, 0, 0, 0.7); /* Para modais com maior opacidade */
   --modal-background: #333; /* Fundo do modal mais escuro */
-  --button-hover-color: #5a4aa4; /* Roxo mais escuro para o hover */
+  --button-hover-color: #660000; /* Vermelho mais escuro para o hover */
 }
 
 body {
-  font-family: "Inter", sans-serif;
+  font-family: "Arial", sans-serif; /* Uma fonte mais pesada para um aspecto mais gótico */
   color: var(--text-color);
-  background-color: var(--background-color);
+  background-color: #111; /* Fundo mais escuro */
   margin: 0;
   padding: 20px;
 }
@@ -19,6 +19,7 @@ body {
 /* Estilos para botões e links */
 .back-button,
 #openModal {
+  position: absolute;
   position: fixed;
   top: 20px;
   left: 20px;
@@ -29,6 +30,7 @@ body {
   border-radius: 5px;
   text-decoration: none;
   font-size: 16px;
+  z-index: 1; /* Garantir que o botão esteja acima do conteúdo da página */
   cursor: pointer;
 }
 
@@ -50,12 +52,11 @@ body {
   width: 400px;
   height: 400px;
   border-radius: 5%;
-  background-color: var(--background-color);
+  background-color: #333; /* Fundo mais escuro para os containers */
   box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
   display: flex;
   align-items: center;
   justify-content: center;
-
   object-fit: cover;
   border-radius: 5%;
   transition: transform 0.3s ease; /* Suaviza a transição da transformação */
@@ -125,5 +126,69 @@ body {
   #openModal {
     left: 50%;
     transform: translateX(-50%);
+  }
+}
+
+/* Modal styling */
+.modal-content {
+  background-color: var(--modal-background);
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  position: relative; /* Adicionado para posicionar a imagem em total resolução */
+}
+
+/* Estilos para a imagem em total resolução */
+.full-image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Alinha a imagem verticalmente */
+}
+
+.full-image {
+  max-width: 100%; /* Garante que a imagem não ultrapasse a largura do modal */
+  max-height: 100%;
+  height: auto; /* A altura será ajustada automaticamente para manter a proporção */
+  border-radius: 5px; /* Adiciona bordas arredondadas */
+  margin-bottom: 20px; /* Espaço entre a imagem e os detalhes da imagem */
+}
+
+/* Estilos para os inputs e botões */
+.modal-content input[type="text"],
+.modal-content textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0 15px 0;
+  border: none;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  border-bottom: 2px solid var(--primary-color);
+  font-size: 16px;
+}
+
+.modal-content textarea {
+  resize: vertical; /* Permite redimensionamento vertical */
+}
+
+.modal-content button {
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Suaviza a transição da cor de fundo */
+  margin-right: 10px; /* Espaçamento entre os botões */
+}
+
+.modal-content button:hover {
+  background-color: var(--button-hover-color);
+}
+
+@media (max-width: 768px) {
+  .modal-content {
+    width: 90%;
   }
 }
