@@ -1,0 +1,141 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Gallery of the bones",
+    "version": "1.0.0",
+    "description": "API para cadastro de imagens de esqueletos"
+  },
+  "paths": {
+    "/imagens": {
+      "get": {
+        "summary": "Obter a lista de imagens",
+        "responses": {
+          "200": {
+            "description": "Lista de imagens retornada com sucesso"
+          }
+        }
+      },
+      "post": {
+        "summary": "Criar uma nova imagem (com descrição)",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/imagens"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Imagem adicionada com sucesso '-'"
+          },
+          "400": {
+            "description": "Dados inválidos fornecidos"
+          }
+        }
+      }
+    },
+    "/imagens/{id}": {
+      "get": {
+        "summary": "Obter informações de um usuário pelo ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Informações do usuário retornadas com sucesso"
+          },
+          "404": {
+            "description": "Usuário não encontrado"
+          }
+        }
+      },
+      "put": {
+        "summary": "Atualizar informações de uma imagem pelo ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/imagens"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Imagem atualizadas com sucesso"
+          },
+          "404": {
+            "description": "Imagem não encontrado"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Excluir uma imagem pelo ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Imagem excluído com sucesso"
+          },
+          "404": {
+            "description": "Imagem não encontrado"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "imagens": {
+        "type": "object",
+        "properties": {
+          "id":{
+            "type":"integer"
+          },
+          "url":{
+            "type":"string"
+          },
+          "titulo": {
+            "type": "string"
+          },
+          "autor": {
+            "type": "string"
+
+          },
+          "descricao":{
+            "type": "string"
+        }
+      }
+    }
+  }
+  }
+}
