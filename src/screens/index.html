@@ -1,39 +1,39 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Galeria de Imagens</title>
     <link rel="stylesheet" href="../styles/styles.css" />
-</head>
-<body onload="loadImages()">
+  </head>
+  <body onload="loadImages()">
     <button id="openModal" class="back-button">Cadastrar Nova Imagem</button>
 
     <div class="gallery">
-        <div class="container" id="img1"></div>
-        <div class="container" id="img2"></div>
-        <div class="container" id="img3"></div>
-        <div class="container" id="img4"></div>
-        <div class="container" id="img5"></div>
-        <div class="container" id="img6"></div>
+      <div class="container" id="img1"></div>
+      <div class="container" id="img2"></div>
+      <div class="container" id="img3"></div>
+      <div class="container" id="img4"></div>
+      <div class="container" id="img5"></div>
+      <div class="container" id="img6"></div>
     </div>
 
     <div id="modalCadastro" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h1>Cadastro de Imagens</h1>
-            <form id="image-form">
-                <label for="url">URL da Imagem:</label>
-                <input type="text" id="url" name="url" required />
-                <label for="titulo">Título:</label>
-                <input type="text" id="titulo" name="titulo" required />
-                <label for="autor">Autor:</label>
-                <input type="text" id="autor" name="autor" required />
-                <label for="descricao">Descrição:</label>
-                <textarea id="descricao" name="descricao" required></textarea>
-                <button type="submit">Cadastrar</button>
-            </form>
-        </div>
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h1>Cadastro de Imagens</h1>
+        <form id="image-form">
+          <label for="url">URL da Imagem:</label>
+          <input type="text" id="url" name="url" required />
+          <label for="titulo">Título:</label>
+          <input type="text" id="titulo" name="titulo" required />
+          <label for="autor">Autor:</label>
+          <input type="text" id="autor" name="autor" required />
+          <label for="descricao">Descrição:</label>
+          <textarea id="descricao" name="descricao" required></textarea>
+          <button type="submit">Cadastrar</button>
+        </form>
+      </div>
     </div>
 
     <div id="imageModal" class="modal">
@@ -41,21 +41,28 @@
             <span class="close">&times;</span>
             <h1>Detalhes da Imagem</h1>
             <form id="ModalImage">
+                <label for="show-id">Id da imagem:</label>
+                <span id="show-id" name="show-id"></span>
+    
                 <label for="edit-url">URL da Imagem:</label>
                 <input type="text" id="edit-url" name="edit-url" required />
+    
                 <label for="edit-titulo">Título:</label>
                 <input type="text" id="edit-titulo" name="edit-titulo" required />
+    
                 <label for="edit-autor">Autor:</label>
                 <input type="text" id="edit-autor" name="edit-autor" required />
+    
                 <label for="edit-descricao">Descrição:</label>
                 <textarea id="edit-descricao" name="edit-descricao" required></textarea>
-                <button type="button" onclick="updateImage()">Salvar Alterações</button>
-                <button type="submit">Excluir</button>
+    
+                <button type="button" id="updateBtn">Salvar Alterações</button>
+                <button type="button" id="deleteBtn">Excluir</button>
             </form>
         </div>
     </div>
     
 
     <script src="../scripts/scriptLeituraImagem.js"></script>
-</body>
+  </body>
 </html>

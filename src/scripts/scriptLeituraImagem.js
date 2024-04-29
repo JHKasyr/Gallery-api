@@ -10,7 +10,7 @@ function loadImages() {
 
                 // Adiciona o evento de clique na imagem
                 img.addEventListener('click', function() {
-                    openImageModal(image.url, image.titulo, image.autor, image.descricao);
+                    openImageModal(image.id,image.url, image.titulo, image.autor, image.descricao);
                 });
 
                 div.appendChild(img);
@@ -19,14 +19,15 @@ function loadImages() {
         .catch(error => console.error('Erro ao carregar JSON:', error));
 }
 
-// Função para abrir o modal com os detalhes da imagem
-function openImageModal(url, titulo, autor, descricao) {
+function openImageModal(id, url, titulo, autor, descricao) {
     var modal = document.getElementById('imageModal');
+    var idInput = document.getElementById('show-id');
     var urlInput = document.getElementById('edit-url');
     var tituloInput = document.getElementById('edit-titulo');
     var autorInput = document.getElementById('edit-autor');
     var descricaoInput = document.getElementById('edit-descricao');
 
+    idInput.textContent = id; // Atualiza o conteúdo do elemento de texto com o ID
     urlInput.value = url;
     tituloInput.value = titulo;
     autorInput.value = autor;
@@ -37,16 +38,73 @@ function openImageModal(url, titulo, autor, descricao) {
     // Adiciona o evento de clique no botão de fechar
     var closeModalBtn = document.getElementsByClassName("close")[1];
     closeModalBtn.onclick = function() {
-      modal.style.display = "none";
+        modal.style.display = "none";
     }
 
     // Adiciona o evento de clique fora do modal para fechá-lo
     window.onclick = function(event) {
-      if (event.target == modal) {
-        modal.style.display = "none";
-      }
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+
+    // Event listener para exclusão
+    var deleteBtn = document.getElementById('deleteBtn');
+    deleteBtn.addEventListener('click', function() {
+        deleteImage(id); // Certifique-se de que a função deleteImage está definida
+    });
+
+    // Event listener para atualização
+    var updateBtn = document.getElementById('updateBtn');
+    updateBtn.addEventListener('click', function() {
+        updateImage(id); // Certifique-se de que a função updateImage está definida
+    });
+}
+
+// Função para deletar uma imagem
+function deleteImage(id) {
+    fetch(`http://localhost:3000/imagens/${id}`, {
+        method: 'DELETE'
+    })
+    .then(() => {
+        listImages(); // Atualiza a lista de imagens após a exclusão
+        closeModal(); // Fecha o modal após a exclusão
+    })
+    .catch(error => console.error('Erro ao excluir imagem:', error));
+}
+
+// Função para atualizar uma imagem
+function updateImage(id) {
+    const url = document.getElementById('edit-url').value;
+    const titulo = document.getElementById('edit-titulo').value;
+    const autor = document.getElementById('edit-autor').value;
+    const descricao = document.getElementById('edit-descricao').value;
+
+    if (url.trim() === '' || titulo.trim() === '' || autor.trim() === '' || descricao.trim() === '') {
+        alert("Preencha todos os campos para prosseguir com a alteração");
+    } else {
+        fetch(`http://localhost:3000/imagens/${id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ url: url, titulo: titulo, autor: autor, descricao: descricao }),
+        })
+        .then(response => response.json())
+        .then(() => {
+            listImages(); // Atualiza a lista de imagens após a atualização
+            closeModal(); // Fecha o modal após a atualização
+        })
+        .catch(error => console.error('Erro ao atualizar imagem:', error));
     }
 }
+
+// Função para fechar o modal
+function closeModal() {
+    var modal = document.getElementById('imageModal');
+    modal.style.display = "none";
+}
+
 //-----------------------------------------------------------------------------------------------------------------------
 
 // Get the modal
@@ -122,12 +180,12 @@ imageModal.addEventListener('submit', (e)=> {
 
 function updateImage(id){
 
-    const url = document.getElementById('url').value
-    const titulo = document.getElementById('titulo').value
-    const autor = document.getElementById('autor').value
-    const descricao = document.getElementById('descricao').value
+    const url = document.getElementById('edit-url').value
+    const titulo = document.getElementById('edit-titulo').value
+    const autor = document.getElementById('edit-autor').value
+    const descricao = document.getElementById('edit-descricao').value
 
-    if(url.trim() === '' && titulo.trim() === '' && autor.trim() === '' && descricao.trim() === ''){
+    if(url.trim() === '' || titulo.trim() === '' || autor.trim() === '' || descricao.trim() === ''){
         alert("Preencha ao menos um dos campos para prosseguir com a alteração")
     } else {
         fetch(`http://localhost:3000/imagens/${id}`, {
