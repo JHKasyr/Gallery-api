@@ -39,6 +39,7 @@ function openImageModal(id, url, titulo, autor, descricao) {
     var closeModalBtn = document.getElementsByClassName("close")[1];
     closeModalBtn.onclick = function() {
         modal.style.display = "none";
+        clearForm(); 
     }
 
     // Adiciona o evento de clique fora do modal para fechá-lo
@@ -104,6 +105,19 @@ function closeModal() {
     var modal = document.getElementById('imageModal');
     modal.style.display = "none";
 }
+function clearForm() {
+    var urlInput = document.getElementById('edit-url');
+    var tituloInput = document.getElementById('edit-titulo');
+    var autorInput = document.getElementById('edit-autor');
+    var descricaoInput = document.getElementById('edit-descricao');
+
+    urlInput.value = '';
+    tituloInput.value = '';
+    autorInput.value = '';
+    descricaoInput.value = '';
+}
+
+
 
 //-----------------------------------------------------------------------------------------------------------------------
 
