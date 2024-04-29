@@ -2,6 +2,7 @@ function loadImages() {
     fetch('http://localhost:3000/imagens')
         .then(response => response.json())
         .then(data => {
+            const shuffledData = shuffleArray(data);
             data.slice(0, 6).forEach((image, index) => {
                 const div = document.getElementById(`img${index + 1}`);
                 const img = document.createElement('img');
@@ -12,7 +13,7 @@ function loadImages() {
                 img.addEventListener('click', function() {
                     openImageModal(image.id,image.url, image.titulo, image.autor, image.descricao);
                 });
-
+                
                 div.appendChild(img);
             });
         })
@@ -218,4 +219,30 @@ function updateImage(id){
     }
 }
 
+function shuffleImages() {
+    // Seleciona todos os containers de imagens
+    const containers = document.querySelectorAll('.container');
+
+    // Para cada container, aleatoriza a ordem das imagens dentro deles
+    containers.forEach(container => {
+        // Seleciona a imagem dentro do container
+        const img = container.querySelector('img');
+        
+        // Gera um número aleatório entre 1 e 6 (número de containers)
+        const randomIndex = Math.floor(Math.random() * 6) + 1;
+
+        // Seleciona um container aleatório
+        const randomContainer = document.getElementById(`img${randomIndex}`);
+
+        // Move a imagem para o container aleatório
+        randomContainer.appendChild(img);
+    });
+}
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+}
 listImages()
