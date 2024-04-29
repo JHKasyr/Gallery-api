@@ -1,0 +1,32 @@
+{
+  "Imagens": [
+    {
+      "id": 1,
+      "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3i2atW9C1qtw-L4bD08WTe-UxOwntnR2SfIEz7e8pwA&s",
+      "titulo": "Carros Fodas",
+      "autor": "Algum velho no Facebook",
+      "descricao": "Imagem contendo três carros fodas"
+    },
+    {
+      "id": 2,
+      "url": "https://i.pinimg.com/236x/db/a8/07/dba807021f64d993785cd9f6d4736773.jpg",
+      "titulo": "Imagens fodas de 2010",
+      "autor": "Pinterest",
+      "descricao": "morte muito foda com uma foice muito foda\n"
+    },
+    {
+      "id": 3,
+      "url": "https://i.pinimg.com/474x/dc/c3/b0/dcc3b062b9f54a778cca7b0e532742a0.jpg",
+      "titulo": "azera rebaixado com o rodão 20 no talo",
+      "autor": "alguém",
+      "descricao": "um carro muito pica com um motor v6 3.3 litros que quem tem come geral (ou comia pq o carro já tem 10 anos)"
+    },
+    {
+      "id": 4,
+      "url": "https://i.pinimg.com/236x/c8/70/44/c870447df39d8d4a359f54994644d53b.jpg",
+      "titulo": "recusamento de oferta/dialogo",
+      "autor": "morte respeitosa",
+      "descricao": "a morte recusando a oferta de qualquer tipo de interação que outra pessoa e/ou entidade propôs "
+    }
+  ]
+}

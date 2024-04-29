@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro de Imagens</title>
+  <link rel="stylesheet" href="../styles/stylesCadastro.css">
+</head>
+
+<body>
+  <a href="index.html" class="back-button">Voltar para a tela inicial</a>
+  
+  <div class="image-form-container">
+    <h1 class="form-title">Cadastro de Imagens</h1>
+
+    <form id="image-form">
+      <div>
+        <label for="url" class="image-form-label">URL da Imagem:</label><br>
+        <input type="text" id="url" name="url" class="image-form-input" required><br>
+      </div>
+
+      <div>
+        <label for="titulo" class="image-form-label">Título:</label><br>
+        <input type="text" id="titulo" name="titulo" class="image-form-input" required>
+      </div>
+
+      <div>
+        <label for="autor" class="image-form-label">Autor:</label><br>
+        <input type="text" id="autor" name="autor" class="image-form-input" required><br>
+      </div>
+
+      <div>
+        <label for="descricao" class="image-form-label">Descrição:</label><br>
+        <textarea id="descricao" name="descricao" class="image-form-textarea" rows="10" cols="33" required></textarea>
+      </div>
+
+      <br>
+
+      <button type="submit" class="image-form-submit">Cadastrar</button>
+    </form>
+
+    <h1 class="image-title">Lista de Imagens (Informações)</h1>
+    <ul class="image-list" id="image-list"></ul>
+  </div>
+
+  <script src="../scripts/scriptCadastroImagem.js"></script>
+</body>
+
+</html>
